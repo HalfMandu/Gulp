@@ -4,14 +4,14 @@
     {
         "type": "gulp",
         "task": "default",
-        "problemMatcher": [
-            "$eslint-stylish"
-        ],
         "label": "gulp: default",
         "group": {
             "kind": "build",
             "isDefault": true
-        }
+        },
+        "problemMatcher": [
+            "$eslint-stylish"
+        ]
     }
   ]
 }
