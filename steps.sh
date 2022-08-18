@@ -10,11 +10,14 @@
 #	gulp-sass
 #	gulp-less
 
-	# add gulp-csslint?
+	# gulp-csslint
+	# gulp-sass-lint
 	
 npm init --yes
 
-npm install gulp gulp-eslint eslint-config-airbnb eslint eslint-plugin-import gulp-if gulp gulp-sass gulp-less --save
+npm install gulp-sass-lint --save-dev
+
+npm install gulp gulp-eslint eslint-config-airbnb eslint eslint-plugin-import gulp-if gulp gulp-sass gulp-less --save-dev
 
 eslint --init	# creates .eslintrc.json file
 

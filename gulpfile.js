@@ -13,8 +13,8 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const gulpIf = require('gulp-if');
 const eslint = require('gulp-eslint-new');
-//const eslint = require('gulp-eslint');
-//const { argv } = require('yargs');
+const sassLint = require('gulp-sass-lint');
+//const { argv } = require('yargs');	
 
 // new lint and fix task 
 gulp.task('eslint', () => gulp.src('./index.js')
@@ -22,32 +22,39 @@ gulp.task('eslint', () => gulp.src('./index.js')
 	.pipe(eslint.format())
 	.pipe(eslint.failAfterError())); // new function added to check if ESLint has run the fix 
 
+// boolean check if file has passed as valid yet
 function isFixed(file){
 	return file.eslint !== null && file.eslint.fixed;
 }
 
+// fix any fixable errors
 gulp.task('eslint-fix', () => gulp.src('./index.js')
 	.pipe(eslint({ fix: true }))
 	.pipe(eslint.format()) 	// if running fix - replace existing file with fixed one 
 	.pipe(gulpIf(isFixed, gulp.dest('./')))
 	.pipe(eslint.failAfterError()));
 
-// takes the set of SCSS/Less files that have changed and runs them through our respective compiler
-gulp.task('mySass', (cb) => {
-	gulp
-		.src('*.scss')
+// takes the set of SCSS/Less files that have changed and runs them through compiler
+gulp.task('compile-scss', (cb) => {
+	gulp.src('*.scss')
 		.pipe(sass())
-		.pipe(
-			gulp.dest((f) => f.base),
-		);
+		.pipe(gulp.dest((f) => f.base));
 	cb();
 });
-    
+
+// scss linting
+gulp.task('sass-lint', () => gulp.src('*.scss')
+	.pipe(
+		sassLint({ configFile: 'config/.sass-lint.yml' }),
+	)
+	.pipe(sassLint.format())
+	.pipe(sassLint.failOnError()));
+  
 // run sass then watches for changes to any SCSS/Less file at the root of our workspace
 gulp.task(
 	'default',
-	gulp.series('mySass', 'eslint', (cb) => {
-		gulp.watch('*.scss', gulp.series('mySass'));
+	gulp.series('compile-scss', 'eslint', 'sass-lint', (cb) => {
+		gulp.watch('*.scss', gulp.series('compile-scss'));
 		cb();
 	}),
 );
