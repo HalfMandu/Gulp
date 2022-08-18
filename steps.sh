@@ -1,4 +1,4 @@
-
+##########################################################################################	
 # Steps
 
 # libs:
@@ -10,6 +10,8 @@
 #	gulp-sass
 #	gulp-less
 
+	# add gulp-csslint?
+	
 npm init --yes
 
 npm install gulp gulp-eslint eslint-config-airbnb eslint eslint-plugin-import gulp-if gulp gulp-sass gulp-less --save
@@ -25,7 +27,17 @@ eslint --init	# creates .eslintrc.json file
 # create gulpfile.js and add gulp task(s) 
 #	e.g. gulp.task('eslint'...), gulp.task('eslint-fix'...), etc...
 	
-	
+##########################################################################################	
+# Helpful commands
+
+gulp --tasks 
+
+eslint .\index.js  
+eslint .\index.js  --fix
+
+
+
+
 	
 	
 	

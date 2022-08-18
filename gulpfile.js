@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /*
-1. Our default gulp task first runs the sass or less task once when it starts up.
+1. default gulp task first runs the sass or less task once when it starts up.
 2. It then watches for changes to any SCSS/Less file at the root of our workspace, for example the current folder open in VS Code.
 3. It takes the set of SCSS/Less files that have changed and runs them through our respective compiler,
     for example gulp-sass, gulp-less.
@@ -12,9 +12,11 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const gulpIf = require('gulp-if');
+const eslint = require('gulp-eslint-new');
+//const eslint = require('gulp-eslint');
 //const { argv } = require('yargs');
-const eslint = require('eslint');
 
+// new lint and fix task 
 gulp.task('eslint', () => gulp.src('./index.js')
 	.pipe(eslint())
 	.pipe(eslint.format())
@@ -22,7 +24,7 @@ gulp.task('eslint', () => gulp.src('./index.js')
 
 function isFixed(file){
 	return file.eslint !== null && file.eslint.fixed;
-} // new lint and fix task 
+}
 
 gulp.task('eslint-fix', () => gulp.src('./index.js')
 	.pipe(eslint({ fix: true }))
@@ -30,22 +32,8 @@ gulp.task('eslint-fix', () => gulp.src('./index.js')
 	.pipe(gulpIf(isFixed, gulp.dest('./')))
 	.pipe(eslint.failAfterError()));
 
-// requireTasks({
-//     passGulp: true,
-//     gulp: gulp
-// });
-
-// dummy
-gulp.task('myTask', () => {
-	console.log('Hello Gulp!');
-	return new Promise((resolve) => {
-		console.log('HTTP Server Started');
-		resolve();
-	});
-});
-
 // takes the set of SCSS/Less files that have changed and runs them through our respective compiler
-gulp.task('sass', (cb) => {
+gulp.task('mySass', (cb) => {
 	gulp
 		.src('*.scss')
 		.pipe(sass())
@@ -54,12 +42,12 @@ gulp.task('sass', (cb) => {
 		);
 	cb();
 });
-
+    
 // run sass then watches for changes to any SCSS/Less file at the root of our workspace
 gulp.task(
 	'default',
-	gulp.series('sass', (cb) => {
-		gulp.watch('*.scss', gulp.series('sass'));
+	gulp.series('mySass', 'eslint', (cb) => {
+		gulp.watch('*.scss', gulp.series('mySass'));
 		cb();
 	}),
 );

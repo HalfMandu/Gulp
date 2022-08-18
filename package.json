@@ -14,6 +14,7 @@
     "eslint-plugin-import": "^2.26.0",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
+    "gulp-eslint-new": "^1.5.1",
     "gulp-if": "^3.0.0",
     "gulp-less": "^5.0.0",
     "gulp-sass": "^5.1.0"
