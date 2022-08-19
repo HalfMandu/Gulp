@@ -1,5 +1,5 @@
 nav {
-  color: red;
+  color: tan;
 }
 nav ul {
   margin: 0;
@@ -13,4 +13,8 @@ nav a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
+}
+
+.articles {
+  color: teal;
 }
