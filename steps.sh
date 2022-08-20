@@ -14,7 +14,12 @@
 #   gulp-sass-lint
 
 # others:
-
+	
+	# gulp-load-plugins 
+		# Rather than have to specify each plugin, gulp-load-plugins will search your packages.json file and automatically include them
+	# gulp-cache 	
+		# A temp file based caching proxy task for gulp.
+		# saving the package data and reuse it when you install the same package again
 	# gulp-minify 
 	# gulp-uglify 
 	# gulp-htmlhint 
@@ -55,12 +60,14 @@ eslint .\index.js
 eslint .\index.js  --fix
 
 	
+#gulp-load-plugins
+var plugins = require('gulp-load-plugins')();
+plugins.pluginName() 	# e.g. : plugins.eslint()	
 	
 	
-	
-	
-	
-	
+# Install the gulp command line utility#	
+	npm install --global gulp-cli
+
 	
 	
 	
