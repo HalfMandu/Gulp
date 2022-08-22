@@ -25,20 +25,21 @@ const AUTOPREFIXER_BROWSERS = [
 // autoprefixer
 Gulp.task('styles', () => Gulp.src('*.scss')
 	// Compile SASS files
-	.pipe(
-		sass({
-			outputStyle: 'nested',
-			precision: 10,
-			includePaths: ['.'],
-			onError: console.error.bind(console, 'Sass error:'),
-		}),
-	)
+	// .pipe(
+	// 	sass({
+	// 		outputStyle: 'nested',
+	// 		precision: 10,
+	// 		includePaths: ['.'],
+	// 		onError: console.error.bind(console, 'Sass error:'),
+	// 	}),
+	// )
+	.pipe(sass().on('error', sass.logError))
 	// Auto-prefix css styles for cross browser compatibility
-	.pipe(autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }))
+	.pipe(autoprefixer())
 	// Minify the file
 	//.pipe(csso())
 	// Output
-	.pipe(Gulp.dest('./dist/css')));
+	.pipe(Gulp.dest((f) => f.base)));
   
 // new lint and fix task 
 Gulp.task('eslint', () => Gulp.src('*.js')

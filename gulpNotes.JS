@@ -15,11 +15,11 @@ Gulp Libs
 		gulp-sass
 		gulp-less
 		gulp-sass-lint
+		autoprefixer 	 		// Parse CSS and add vendor prefixes to rules by Can I Use.
+		gulp-uglify 	 // also minifies code (which types?) ...except this uglifies and obfuscates it too
 	
 	//others I haven't tried yet 
 	
-		autoprefixer 	 // Parse CSS and add vendor prefixes to rules by Can I Use.
-		gulp-uglify 	 // also minifies code (which types?) ...except this uglifies and obfuscates it too
 		gulp-minify 	 // minify code, but also might still uglify() ? ...
 		gulp-htmlmin	 // html minfiying...needed, or what does html?
 		gulp-load-plugins 
