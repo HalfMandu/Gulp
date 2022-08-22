@@ -17,17 +17,17 @@ Gulp Libs
 		gulp-sass-lint
 		autoprefixer 	 		// Parse CSS and add vendor prefixes to rules by Can I Use.
 		gulp-uglify 	 		// also minifies (which types?) ...except this uglifies and obfuscates it too
+		gulp-htmlmin	 		// html minfiying
+		gulp-htmlhint 
 	
 	//others I haven't tried yet 
 	
-		gulp-minify 	 // minify code, but also might still uglify() ? ...
-		gulp-htmlmin	 // html minfiying...needed, or what does html?
+		gulp-minify 	 // minify code, but also might still uglify()
 		gulp-load-plugins 
 			-Rather than have to specify each plugin, gulp-load-plugins will search your packages.json file and automatically include them
 		gulp-cache 	
 			-A temp file based caching proxy task for gulp.
 			-saving the package data and reuse it when you install the same package again
-		gulp-htmlhint 
 		gulp-util 		 //Set of useful utilities.
 		gulp-uncss 	 	 // Remove unused CSS selectors with UnCSS.
 		gulp-check-unused-css // Check your HTML templates for unused CSS classes.

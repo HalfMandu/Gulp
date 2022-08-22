@@ -10,8 +10,16 @@ import sassLint from 'gulp-sass-lint';
 import autoprefixer from 'gulp-autoprefixer';
 import uglify from 'gulp-uglify';
 import pump from 'pump';
+import htmlmin from 'gulp-htmlmin';
+import htmlhint from 'gulp-htmlhint';
 
 const sass = gulpSass(Sass);
+
+// lint + minify HTML
+Gulp.task('html', () => Gulp.src('*.html')
+	.pipe(htmlhint())
+	.pipe(htmlmin({ collapseWhitespace: true }))
+	.pipe(Gulp.dest('dist')));
 
 // lint scss
 Gulp.task('sass-lint', () => Gulp.src('*.scss')
@@ -62,5 +70,5 @@ Gulp.task('sass:watch', () => {
 // run tasks then watch for changes to any SCSS/Less files
 Gulp.task(
 	'default',
-	Gulp.series('sass-lint', 'styles', 'eslint', 'compress', 'sass:watch'),
+	Gulp.series('html', 'sass-lint', 'styles', 'eslint', 'compress', 'sass:watch'),
 );
