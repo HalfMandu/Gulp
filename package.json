@@ -8,6 +8,7 @@
   },
   "author": "SR",
   "license": "ISC",
+  "type": "module",
   "browserslist": [
     "ie >= 10",
     "ie_mob >= 10",

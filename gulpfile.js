@@ -1,16 +1,19 @@
 /* eslint-disable max-len */
 
 // Sass configuration
-const Gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const GulpIf = require('gulp-if');
-const eslint = require('gulp-eslint-new');
-const sassLint = require('gulp-sass-lint');
-const autoprefixer = require('gulp-autoprefixer');
-const uglify = require('gulp-uglify');
-const pump = require('pump');
+import Gulp from 'gulp';
+import gulpSass from 'gulp-sass';
+import Sass from 'sass';
+import GulpIf from 'gulp-if';
+import eslint from 'gulp-eslint-new';
+import sassLint from 'gulp-sass-lint';
+import autoprefixer from 'gulp-autoprefixer';
+import uglify from 'gulp-uglify';
+import pump from 'pump';
 
-// lint all scss files
+const sass = gulpSass(Sass);
+
+// lint scss
 Gulp.task('sass-lint', () => Gulp.src('*.scss')
 	.pipe(sassLint({ configFile: 'config/.sass-lint.yml' }))
 	.pipe(sassLint.format())
@@ -22,7 +25,7 @@ Gulp.task('styles', () => Gulp.src('*.scss')
 	.pipe(autoprefixer())
 	.pipe(Gulp.dest((f) => f.base)));
   
-// new lint and fix task 
+// lint js 
 Gulp.task('eslint', () => Gulp.src('*.js')
 	.pipe(eslint())
 	.pipe(eslint.format())
@@ -31,7 +34,7 @@ Gulp.task('eslint', () => Gulp.src('*.js')
 // boolean check if file has passed as valid yet
 const isFixed = (file) => file.eslint !== null && file.eslint.fixed;
 
-// fix any fixable errors
+// fix any fixable js errors
 Gulp.task('eslint-fix', () => Gulp.src('*.js')
 	.pipe(eslint({ fix: true }))
 	.pipe(eslint.format()) 	// if running fix - replace existing file with fixed one 
@@ -54,6 +57,7 @@ Gulp.task('sass:watch', () => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////
+// Default 
 
 // run tasks then watch for changes to any SCSS/Less files
 Gulp.task(

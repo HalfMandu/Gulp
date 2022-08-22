@@ -16,7 +16,7 @@ Gulp Libs
 		gulp-less
 		gulp-sass-lint
 		autoprefixer 	 		// Parse CSS and add vendor prefixes to rules by Can I Use.
-		gulp-uglify 	 // also minifies code (which types?) ...except this uglifies and obfuscates it too
+		gulp-uglify 	 		// also minifies (which types?) ...except this uglifies and obfuscates it too
 	
 	//others I haven't tried yet 
 	
