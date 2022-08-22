@@ -8,4 +8,4 @@ for (const num of arr){
 	console.log(num);
 }
 
-console.log('d');
+console.log('ddd');

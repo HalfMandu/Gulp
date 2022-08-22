@@ -1,0 +1,1 @@
+console.log("starting up...");const arr=[1,2,3];for(const a of arr)console.log(a);console.log("ddd");
