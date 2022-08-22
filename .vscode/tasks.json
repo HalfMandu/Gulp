@@ -9,15 +9,22 @@
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": [
-        "$eslint-stylish"
-      ]
+      "problemMatcher": ["$eslint-stylish"]
     },
     {
       "type": "gulp",
       "task": "sass-lint",
       "problemMatcher": [],
       "label": "gulp: sass-lint"
+    },
+    {
+      "taskName": "Chrome",
+      "type": "process",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "args": ["${file}"]
     }
   ]
 }

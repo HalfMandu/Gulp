@@ -12,6 +12,7 @@ import uglify from 'gulp-uglify';
 import pump from 'pump';
 import htmlmin from 'gulp-htmlmin';
 import htmlhint from 'gulp-htmlhint';
+import livereload from 'gulp-livereload';
 
 const sass = gulpSass(Sass);
 
@@ -28,10 +29,16 @@ Gulp.task('sass-lint', () => Gulp.src('*.scss')
 	.pipe(sassLint.failOnError()));
 
 // compile to css and autoprefix styles for cross browser compatibility
-Gulp.task('styles', () => Gulp.src('*.scss')
-	.pipe(sass().on('error', sass.logError))
-	.pipe(autoprefixer())
-	.pipe(Gulp.dest((f) => f.base)));
+Gulp.task('styles', async (cb) => pump(
+	[
+		Gulp.src('*.scss'),
+		sass().on('error', sass.logError),
+		autoprefixer(),
+		Gulp.dest((f) => f.base),
+		livereload({ start: true }),
+	],
+	cb,
+));
   
 // lint js 
 Gulp.task('eslint', () => Gulp.src('*.js')
@@ -59,8 +66,9 @@ Gulp.task('compress', (cb) => pump(
 	cb,
 ));
 
-// watch for any scss changes 
+// watch for any scss changes + live server
 Gulp.task('sass:watch', () => {
+	livereload.listen();
 	Gulp.watch('*.scss', Gulp.series('styles'));
 });
 
