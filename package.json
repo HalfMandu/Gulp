@@ -1,19 +1,29 @@
 {
-	"name" : "gulp",
-	"version" : "1.0.0",
-	"description" : "gulp demos",
-	"main" : "index.js",
-	"scripts" : {
-		"test" : "echo \"Error: no test specified\" && exit 1"
+	"name": "gulp",
+	"version": "1.0.0",
+	"description": "gulp demos",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"predeploy": "echo About to deploy",
+		"postdeploy": "echo Deployed",
+		"test": "eslint *.scss"
 	},
-	"author" : "Stephen Rinkus",
-	"license" : "ISC",
-	"type" : "module",
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/HalfMandu/Gulp.git"
+	"author": "Stephen Rinkus",
+	"license": "ISC",
+	"type": "module",
+	"keywords": [
+		"html5",
+		"css",
+		"readability",
+		"responsive design",
+		"postcss"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/HalfMandu/Gulp.git"
 	},
-	"browserslist" : [
+	"browserslist": [
 		"ie >= 10",
 		"ie_mob >= 10",
 		"ff >= 30",
@@ -24,22 +34,22 @@
 		"android >= 4.4",
 		"bb >= 10"
 	],
-	"devDependencies" : {
-		"eslint" : "^8.22.0",
-		"eslint-config-airbnb" : "^19.0.4",
-		"eslint-plugin-import" : "^2.26.0",
-		"gulp" : "^4.0.2",
-		"gulp-autoprefixer" : "^8.0.0",
-		"gulp-csslint" : "^1.0.1",
-		"gulp-eslint" : "^6.0.0",
-		"gulp-eslint-new" : "^1.5.1",
-		"gulp-htmlhint" : "^4.0.2",
-		"gulp-htmlmin" : "^5.0.1",
-		"gulp-if" : "^3.0.0",
-		"gulp-less" : "^5.0.0",
-		"gulp-livereload" : "^4.0.2",
-		"gulp-sass" : "^5.1.0",
-		"gulp-sass-lint" : "^1.4.0",
-		"gulp-uglify" : "^3.0.2"
+	"devDependencies": {
+		"eslint": "^8.22.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-plugin-import": "^2.26.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^8.0.0",
+		"gulp-csslint": "^1.0.1",
+		"gulp-eslint": "^6.0.0",
+		"gulp-eslint-new": "^1.5.1",
+		"gulp-htmlhint": "^4.0.2",
+		"gulp-htmlmin": "^5.0.1",
+		"gulp-if": "^3.0.0",
+		"gulp-less": "^5.0.0",
+		"gulp-livereload": "^4.0.2",
+		"gulp-sass": "^5.1.0",
+		"gulp-sass-lint": "^1.4.0",
+		"gulp-uglify": "^3.0.2"
 	}
 }
