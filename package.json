@@ -7,7 +7,8 @@
 		"start": "node index.js",
 		"predeploy": "echo About to deploy",
 		"postdeploy": "echo Deployed",
-		"test": "eslint *.scss"
+		"lintJs": "eslint *.js",
+		"lintFix": "eslint *.js --fix"
 	},
 	"author": "Stephen Rinkus",
 	"license": "ISC",
