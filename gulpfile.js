@@ -14,7 +14,17 @@ import htmlmin from 'gulp-htmlmin';
 import htmlhint from 'gulp-htmlhint';
 import livereload from 'gulp-livereload';
 
+//const babel = import('gulp-babel');
+import babel from 'gulp-babel';
+
 const sass = gulpSass(Sass);
+
+// transpile ES6 to ES5
+Gulp.task('transpile', () => Gulp.src('*.js')
+	.pipe(babel({
+		presets: ['@babel/env'],
+	}))
+	.pipe(Gulp.dest('dist')));
 
 // lint + minify HTML
 Gulp.task('html', () => Gulp.src('*.html')
